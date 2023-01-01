@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="style/main.css">
+  
+  <title>Frontend Mentor | Notifications page</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+</head>
+<body>
+  
+
+  <main class="container">
+      <div class="notification-head">
+        <h3>Notifications</h3>
+        <p id="notif-num">3</p>
+        <button class="btn-read" onclick="read()" style="color: var(--dark-grayish-blue);">Mark all as read</button>
+      </div>
+      <!-- close class notification-header -->
+
+      <div class="notification-body" id="items">
+        <div class="row" v-for="items in users" :class="{ unread: items.unread }">
+          <div class="col-1">
+            <img class="image" :src="items.src" alt="">
+          </div>
+          <div :class="[items.post_img !== '' ? 'col-10' : 'col-11']">
+            <p>
+              <a href="" style="color: var(--very-dark-blue);">
+                {{ items.name }}
+              </a>
+
+              {{ items.status }}
+              <a href="" style="color:  var(--dark-grayish-blue);" name="post">
+                {{ items.post }}
+              </a>
+              <a href="" style="color: var(--blue);" name="group">
+                  {{ items.group }}
+              </a>
+              <span class="dot" v-show="items.unread"></span>
+            </p>
+            <a href="">
+              <p class="private-message" v-show="items.private_msg !== ''">{{ items.private_msg }}</p>
+            </a>
+            <p class="time-stamp">{{ items.time }}</p>
+          </div>
+          <div class="col-1" v-show="items.post_img !== ''">
+            <a href="">
+              <img class="image" :src="items.post_img" alt="">
+            </a>
+          </div>
+        </div>
+        <!-- close items notification -->
+      </div>
+      <!-- close class notification-body -->
+    
+  </main> 
+  <!-- close class container -->
+  
+  <footer>
+    <div class="attribution">
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+      Coded by <a href="#">@mrp14yz</a>.
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+  <script type="module" src="js/main.js"></script>
+  <script>
+    function read(){
+      var items = document.querySelectorAll("#items > .unread");
+      var dot = document.querySelectorAll(".dot");
+
+      for( i = 0; i < items.length; i++){
+        items[i].classList.remove('unread');
+        dot[i].style.display = "none";
+      }
+      document.getElementById("notif-num").style.display = "none";
+    }
+  </script>
+  
+</body>
+</html>
