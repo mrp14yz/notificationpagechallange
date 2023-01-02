@@ -51,7 +51,7 @@
             </a>
             <p class="time-stamp">{{ items.time }}</p>
           </div>
-          <div class="col-1" v-show="items.post_img !== ''">
+          <div class="col-1" v-if="items.post_img !== ''">
             <a href="#" aria-label="post-image-notification">
               <img class="image" :src="items.post_img" alt="">
             </a>
