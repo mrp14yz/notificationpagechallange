@@ -27,7 +27,7 @@
       <!-- close class notification-header -->
 
       <div class="notification-body" id="items">
-        <div class="row" v-for="items in users" :class="{ unread: items.unread }">
+        <div class="row" v-for="(items, index) in users" :class="{ unread: items.unread }">
           <div class="col-1">
             <img class="image" :src="items.src" alt="">
           </div>
@@ -38,10 +38,10 @@
               </a>
 
               {{ items.status }}
-              <a href="#" style="color:  var(--dark-grayish-blue);" name="post" aria-label="post-notification">
+              <a href="#" style="color:  var(--dark-grayish-blue);" aria-label="post-notification" :id="post"+"users.length-index">
                 {{ items.post }}
               </a>
-              <a href="#" style="color: var(--blue);" name="group" aria-label="group-notification">
+              <a href="#" style="color: var(--blue);" aria-label="group-notification">
                   {{ items.group }}
               </a>
               <span class="dot" v-show="items.unread"></span>
