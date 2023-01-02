@@ -33,26 +33,26 @@
           </div>
           <div :class="[items.post_img !== '' ? 'col-10' : 'col-11']">
             <p>
-              <a href="" style="color: var(--very-dark-blue);">
+              <a href="#" style="color: var(--very-dark-blue);">
                 {{ items.name }}
               </a>
 
               {{ items.status }}
-              <a href="" style="color:  var(--dark-grayish-blue);" name="post">
+              <a href="#" style="color:  var(--dark-grayish-blue);" name="post">
                 {{ items.post }}
               </a>
-              <a href="" style="color: var(--blue);" name="group">
+              <a href="#" style="color: var(--blue);" name="group">
                   {{ items.group }}
               </a>
               <span class="dot" v-show="items.unread"></span>
             </p>
-            <a href="">
+            <a href="#">
               <p class="private-message" v-show="items.private_msg !== ''">{{ items.private_msg }}</p>
             </a>
             <p class="time-stamp">{{ items.time }}</p>
           </div>
           <div class="col-1" v-show="items.post_img !== ''">
-            <a href="">
+            <a href="#">
               <img class="image" :src="items.post_img" alt="">
             </a>
           </div>
